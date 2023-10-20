@@ -90,7 +90,7 @@ export default class WebGLRenderer {
                 for (var m in object.materialFaces) {
 
                     materialFace = object.materialFaces[m];
-                    material = object.material[m];
+                    material = object.materials[m];
                     if (!material) continue;
                     //log(material);
 
