@@ -35,8 +35,7 @@ export default class Geometry {
         })
 	}
 
-    computeNormals(useVertexNormals) {
-        var vA, vB, vC, cb = new Vector3(), ab = new Vector3();
+    computeNormals() {
 
         this.vertices.forEach(vertex => {
 			vertex.normal.set( 0, 0, 0 );
@@ -44,47 +43,24 @@ export default class Geometry {
 
         this.faces.forEach(face => {
 
-            if ( useVertexNormals && face.vertexNormals.length  ) {
-                
-                // // set face normal to average of vertex normals
-                
-                // cb.set( 0, 0, 0 );
+            const vA = this.vertices[ face.a ];
+            const vB = this.vertices[ face.b ];
+            const vC = this.vertices[ face.c ];
 
-                // face.normal.forEach((_, index) => {
-                //     cb.x += face.vertexNormals[index].x;
-                //     cb.y += face.vertexNormals[index].y;
-                //     cb.z += face.vertexNormals[index].z;
-                // })
+            const cb = new Vector3()
+            const ab = new Vector3()
 
-                // cb.x /= 3;
-                // cb.y /= 3;
-                // cb.z /= 3;
+            cb.sub( vC.position, vB.position );
+            ab.sub( vA.position, vB.position );
+            cb.crossSelf( ab );
 
-                // if ( !cb.isZero() ) {
+            if ( !cb.isZero() ) {
 
-                //     cb.normalize();
+                cb.normalize();
 
-                // }
-
-                // face.normal.copy( cb );
-            } else {
-                
-                vA = this.vertices[ face.a ];
-                vB = this.vertices[ face.b ];
-                vC = this.vertices[ face.c ];
-
-                cb.sub( vC.position, vB.position );
-                ab.sub( vA.position, vB.position );
-                cb.crossSelf( ab );
-
-                if ( !cb.isZero() ) {
-
-                    cb.normalize();
-
-                }
-
-                face.normal.copy( cb );
             }
+
+            face.normal.copy( cb );
 
         })
 

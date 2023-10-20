@@ -2,7 +2,6 @@ import Color from "./core/Color";
 import Vector2 from "./core/Vector2";
 import Vector3 from "./core/Vector3";
 import Vector4 from "./core/Vector4";
-import Rectangle from "./core/Rectangle";
 import Matrix4 from "./core/Matrix4";
 import Vertex from "./core/Vertex";
 import Face3 from "./core/Face3";
@@ -21,7 +20,6 @@ import Mesh from "./objects/Mesh";
 import Particle from "./objects/Particle";
 import Line from "./objects/Line";
 
-import LineColorMaterial from "./materials/LineColorMaterial";
 import MeshColorFillMaterial from "./materials/MeshColorFillMaterial";
 import MeshFaceColorFillMaterial from "./materials/MeshFaceColorFillMaterial";
 import MeshBitmapUVMappingMaterial  from "./materials/MeshBitmapUVMappingMaterial";
@@ -40,7 +38,6 @@ export default {
     Vector2,
     Vector3,
     Vector4,
-    Rectangle,
     Matrix4,
     Vertex,
     Face3,
@@ -59,7 +56,6 @@ export default {
     Particle,
     Line,
 
-    LineColorMaterial,
     MeshColorFillMaterial,
     MeshFaceColorFillMaterial,
     MeshBitmapUVMappingMaterial,

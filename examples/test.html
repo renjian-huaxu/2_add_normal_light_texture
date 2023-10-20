@@ -34,7 +34,7 @@
 			document.addEventListener('mousemove', onDocumentMouseMove, false);
             init();
 			loop();
-			// setInterval(loop, 1000/60);
+			setInterval(loop, 1000/60);
 
             function init() {
                 container = document.createElement('div');
@@ -49,74 +49,78 @@
 				
 
 
-				// // plane
-
-                // mesh = new MThree.Mesh( new MThree.Plane( 100, 100 ), new MThree.MeshColorFillMaterial( Math.random() * 0xffffff ) );
+                // mesh = new MThree.Mesh( new MThree.Plane( 200, 200 ), new MThree.MeshColorFillMaterial( Math.random() * 0xffffff ) );
 				// mesh.position.y = 0;
+				// mesh.doubleSided = true;
+				// mesh.updateMatrix();
+				// scene.add(mesh);
+
+				mesh = new MThree.Mesh( new MThree.Plane( 200, 200 ), new MThree.MeshFaceColorFillMaterial( Math.random() * 0xffffff ) );
+				mesh.position.y = 0;
+				mesh.doubleSided = true;
+				mesh.updateMatrix();
+				scene.add(mesh);
+
+
+
+
+				// mesh = new MThree.Mesh( new MThree.Plane( 100, 100 ) );
+				// mesh.position.y = 200;
 				// mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
 				// mesh.doubleSided = true;
 				// mesh.updateMatrix();
 				// scene.add(mesh);
 
+		
+				
+				// CUBES
 
+				var cube = new MThree.Cube(200, 200, 200);
 
-
-				// CUBE
-
-				var cube = new MThree.Cube(100, 100, 100);
-
-				mesh = new MThree.Mesh( cube, new MThree.MeshColorFillMaterial( 0x0000ff, 0.5 ) );
-				mesh.position.x = 0;
-				mesh.rotation.x = 20;
-				mesh.rotation.y = 50;
-				mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
+				// mesh = new MThree.Mesh( cube, new MThree.MeshColorFillMaterial( 0x0000ff, 0.5) );
+				mesh = new MThree.Mesh( cube, new MThree.MeshColorFillMaterial( 0xffffff, 0.5) );
+				mesh.position.x = -200;
+				mesh.position.y = -100;
+				// mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
 				mesh.updateMatrix();
 				scene.add(mesh);
 
 				
 
 				
+				
 				// CYLINDER
 
-				// mesh = new MThree.Mesh( new MThree.Cylinder( 10, 20, 100, 200, - 50, - 20 ), new MThree.MeshColorFillMaterial( Math.random() * 0xffffff ) );
-				// mesh.position.x = -500;
+				mesh = new MThree.Mesh( new MThree.Cylinder( 10, 20, 100, 200, - 50, - 20 ), new MThree.MeshColorFillMaterial( Math.random() * 0xffffff ) );
+				mesh.position.x = -400;
 				// mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
-				// mesh.updateMatrix();
-				// scene.add(mesh);
-
+				mesh.updateMatrix();
+				scene.add(mesh);
 
 
 
 				// QRCODE
 
-				// mesh = new MThree.Mesh(new Qrcode(), new MThree.MeshFaceColorFillMaterial());
-				// mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
-				// mesh.updateMatrix();
-				// scene.add(mesh);
+				mesh = new MThree.Mesh(new Qrcode(), new MThree.MeshFaceColorFillMaterial());
+				mesh.position.y = -400;
+				mesh.updateMatrix();
+				scene.add(mesh);
+				
 
 
-				// // LIGHTS
+				// LIGHTS
 
-				// var ambient = new MThree.AmbientLight( 0x80ffff );
-				// scene.addLight( ambient );
+				var ambient = new MThree.AmbientLight( 0xff0000 );
+				scene.addLight( ambient );
 
-				// var directional = new MThree.DirectionalLight( 0xffff00 );
-				// scene.addLight( directional );
+				var directionalLight = new MThree.DirectionalLight( 0x00ff00 );
+				directionalLight.position.y = 3000;
+				directionalLight.position.z = -100;
+				directionalLight.position.normalize();
+				scene.addLight( directionalLight );
 
-
-				// // LIGHTS
-
-				// var ambient = new MThree.AmbientLight( 0x221100 );
-				// scene.addLight( ambient );
-
-				// var directionalLight = new MThree.DirectionalLight( 0xffeedd );
-				// directionalLight.position.y = -70;
-				// directionalLight.position.z = 100;
-				// directionalLight.position.normalize();
-				// scene.addLight( directionalLight );
-
-				// var pointLight = new MThree.PointLight( 0xff0000, 1 );
-				// scene.addLight( pointLight );
+				var pointLight = new MThree.PointLight( 0xff0000, 1 );
+				scene.addLight( pointLight );
 
 				
 				
