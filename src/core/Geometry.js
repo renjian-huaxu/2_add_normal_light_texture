@@ -13,6 +13,7 @@ export default class Geometry {
     }
 
 	computeCentroids() {
+
         this.faces.forEach(face => {
             face.centroid.set( 0, 0, 0 );
 
@@ -67,6 +68,7 @@ export default class Geometry {
     }
 
 	computeBoundingBox() {
+        
 		if ( this.vertices.length > 0 ) {
             
             this.bbox = { 'x': [ this.vertices[ 0 ].position.x, this.vertices[ 0 ].position.x ], 

@@ -10,29 +10,37 @@ import Mesh from "../objects/Mesh";
 
 var _canvas = document.createElement('canvas'), 
     _program,
-    viewMatrix = new Matrix4(), normalMatrix
+    viewMatrix = new Matrix4(), 
+    normalMatrix
 /**
  * @type {WebGLRenderingContext}
  */
 var _gl
 
 export default class WebGLRenderer {
+
     domElement = _canvas
     autoClear = true
 
     constructor() {
+
         this.initGL()
         this.initProgram()
+
     }
 
     setSize(width, height) {
+
         _canvas.width = width;
         _canvas.height = height;
         _gl.viewport(0, 0, _canvas.width, _canvas.height);
+
     }
 
     clear() {
+
         _gl.clear(_gl.COLOR_BUFFER_BIT | _gl.DEPTH_BUFFER_BIT);
+        
     }
 
     render(scene, camera) {
@@ -332,8 +340,8 @@ export default class WebGLRenderer {
 
         }
 
-        _gl.clearColor(0, 0, 0, 1);
-        _gl.clearDepth(1);
+        // _gl.clearColor(0, 0, 0, 1);
+        // _gl.clearDepth(1);
 
         _gl.enable(_gl.DEPTH_TEST);
         _gl.depthFunc(_gl.LEQUAL);

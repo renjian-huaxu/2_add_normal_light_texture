@@ -4,8 +4,10 @@ export default class Color {
     // __styleString = 'rgba(0, 0, 0, 1)'
 
     constructor(hex) {
+
         this.autoUpdate = true;
         this.setHex( hex );
+        
     }
 
     setRGBA(r, g, b, a) {
